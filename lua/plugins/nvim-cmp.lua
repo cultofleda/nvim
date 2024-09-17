@@ -38,11 +38,11 @@ return {
                 }),
             }),
             sources = {
-                { name = "nvim_lsp", priority = 1000 },
-                { name = "luasnip", priority = 750 },
-                { name = "buffer", priority = 500 },
-                { name = "path", priority = 250 },
                 { name = "emoji", priority = 100 },
+                -- { name = "path", priority = 250 },
+                { name = "buffer", priority = 500 },
+                { name = "luasnip", priority = 750 },
+                { name = "nvim_lsp", priority = 1000 },
             },
             formatting = {
                 format = lspkind.cmp_format({
@@ -58,6 +58,9 @@ return {
                         return vim_item
                     end,
                 }),
+            },
+            performance = {
+                max_view_entries = 7,
             },
         }
         vim.opt.completeopt = { "menu", "menuone", "noselect" }
