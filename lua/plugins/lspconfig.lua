@@ -46,10 +46,11 @@ return {
 
             local lspconfig = require("lspconfig")
 
-            ---@diagnostic disable-next-line: unused-local
+            ---@diagnostic disable-next-line
             local function get_typescript_server_path(root_dir)
                 local global_ts = vim.fn.expand("$FNM_DIR/aliases/default/lib/node_modules/typescript/lib")
                 local project_ts = ""
+                ---@diagnostic disable-next-line
                 local function check_dir(path)
                     project_ts = lspconfig.util.path.join(path, "node_modules", "typescript", "lib")
                     if lspconfig.util.path.exists(project_ts) then
@@ -171,7 +172,6 @@ return {
                     },
                 },
             })
-
             lspconfig.volar.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
@@ -184,31 +184,35 @@ return {
                 --         new_config.init_options.typescript.tsdk = tsserver_path
                 --     end,
             })
-
-            lspconfig.vtsls.setup({
+            lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     custom_attach(client, bufnr)
                 end,
-                filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-                settings = {
-                    vtsls = {
-                        autoUseWorkspaceTsdk = true,
-                        tsserver = {
-                            globalPlugins = {
-                                {
-                                    name = "@vue/typescript-plugin",
-                                    location = vim.fn.expand(
-                                        "$FNM_DIR/aliases/default/lib/node_modules/@vue/typescript-plugin/"
-                                    ),
-                                    languages = { "vue" },
-                                    configNamespace = "typescript",
-                                    enableForWorkspaceTypeScriptVersions = true,
-                                },
-                            },
+                init_options = {
+                    plugins = {
+                        {
+                            name = "@vue/typescript-plugin",
+                            location = vim.fn.expand(
+                                "$FNM_DIR/aliases/default/lib/node_modules/@vue/typescript-plugin/"
+                            ),
+                            languages = { "vue", "javascript", "typescript" },
+                            configNamespace = "typescript",
+                            enableForWorkspaceTypeScriptVersions = true,
                         },
                     },
                 },
+                filetypes = {
+                    "javascript",
+                    "typescript",
+                    "vue",
+                },
+            })
+            lspconfig.eslint.setup({
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    custom_attach(client, bufnr)
+                end,
             })
         end,
     },
@@ -219,6 +223,7 @@ return {
                 ensure_installed = {
                     "prettier",
                     "stylua",
+                    "eslint_d",
                 },
             })
             vim.keymap.set("n", "<leader>cm", "<CMD>Mason<CR>", { silent = true, desc = "Mason" })
@@ -232,7 +237,7 @@ return {
                     "emmet_language_server",
                     "lua_ls",
                     "volar",
-                    "vtsls",
+                    "ts_ls",
                 },
             })
         end,
