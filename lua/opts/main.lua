@@ -16,6 +16,7 @@ vim.opt.sidescrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 
 vim.cmd("set nohidden")
+vim.cmd("set signcolumn=yes:1")
 
 -- Enable cross-copy-paste between WSL and nvim
 if vim.fn.has("wsl") == 1 then
