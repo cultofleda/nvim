@@ -98,37 +98,37 @@ return {
                     return vim.tbl_extend("force", opts, { desc = desc })
                 end
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, with_desc(keymap_opts, "Hover"))
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, with_desc(keymap_opts, "Goto Definition"))
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, with_desc(keymap_opts, "[G]o to [d]efinition"))
                 vim.keymap.set(
                     "n",
                     "<leader>gr",
                     "<cmd>Glance references<CR>",
-                    with_desc(keymap_opts, "Find References")
+                    with_desc(keymap_opts, "[G]lance [r]eferences")
                 )
-                -- diagnostics
-                vim.keymap.set("n", "gr", vim.lsp.buf.rename, with_desc(keymap_opts, "Rename"))
+                -- rename symbol
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, with_desc(keymap_opts, "[R]e[n]ame symbol"))
                 -- diagnostic(s) on current line
                 vim.keymap.set(
                     "n",
                     "<leader>dk",
                     vim.diagnostic.open_float,
-                    with_desc(keymap_opts, "View Current Diagnostic")
+                    with_desc(keymap_opts, "[D]iagnostics: [k]current")
                 )
                 -- move to next diagnostic in buffer
                 vim.keymap.set(
                     "n",
                     "<leader>dn",
                     vim.diagnostic.goto_next,
-                    with_desc(keymap_opts, "Goto next diagnostic")
+                    with_desc(keymap_opts, "[D]iagnostics: [n]ext")
                 )
                 -- move to prev diagnostic in buffer
                 vim.keymap.set(
                     "n",
                     "<leader>dp",
                     vim.diagnostic.goto_prev,
-                    with_desc(keymap_opts, "Goto prev diagnostic")
+                    with_desc(keymap_opts, "[D]iagnostics: [p]rev")
                 )
-                -- show all buffer diagnostics in qflist
+                -- show all buffer diagnostics in quick fix list
                 vim.keymap.set("n", "<leader>da", vim.diagnostic.setqflist, with_desc(keymap_opts, "Populate qf list"))
                 -- restart clients
                 vim.keymap.set(
@@ -140,7 +140,7 @@ return {
                 if format_opts ~= nil then
                     vim.keymap.set("n", "<leader>cf", function()
                         format_by_client(bufnr, format_opts.allowed_clients or { client.name })
-                    end, with_desc(keymap_opts, "Format")) -- format
+                    end, with_desc(keymap_opts, "[C]ode [f]ormat")) -- format
                     if format_opts.format_on_save then
                         register_format_on_save(bufnr, format_opts.allowed_clients or { client.name })
                     end
@@ -150,7 +150,7 @@ return {
                 end
             end
 
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             lspconfig.emmet_language_server.setup({})
 
@@ -223,7 +223,6 @@ return {
                 ensure_installed = {
                     "prettier",
                     "stylua",
-                    "eslint_d",
                 },
             })
             vim.keymap.set("n", "<leader>cm", "<CMD>Mason<CR>", { silent = true, desc = "Mason" })
@@ -238,6 +237,7 @@ return {
                     "lua_ls",
                     "volar",
                     "ts_ls",
+                    "eslint",
                 },
             })
         end,
