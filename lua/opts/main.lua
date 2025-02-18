@@ -1,7 +1,12 @@
+-- Set leader key to <space>
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 vim.g.editorconfig = true
+
+-- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.g.mapleader = " "
 
 vim.opt.cursorline = true
 vim.opt.expandtab = true
@@ -14,6 +19,19 @@ vim.opt.colorcolumn = "80"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.clipboard = "unnamedplus"
+
+-- Configure how splits should be opened (to the right and to the bottom)
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 vim.cmd("set nohidden")
 vim.cmd("set signcolumn=yes:1")
