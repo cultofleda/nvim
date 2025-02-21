@@ -14,14 +14,6 @@ return {
         config = function()
             -- Configure diagnostic display
             vim.diagnostic.config({
-                virtual_text = {
-                    -- Only display errors w/ virtual text
-                    severity = vim.diagnostic.severity.ERROR,
-                    -- Prepend with diagnostic source if there is more than one attached to the buffer
-                    -- (e.g. (eslint) Error: blah blah blah)
-                    source = "if_many",
-                    signs = false,
-                },
                 float = {
                     severity_sort = true,
                     source = "if_many",
@@ -208,12 +200,12 @@ return {
                     "vue",
                 },
             })
-            lspconfig.eslint.setup({
-                capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    custom_attach(client, bufnr)
-                end,
-            })
+            -- lspconfig.eslint.setup({
+            --     capabilities = capabilities,
+            --     on_attach = function(client, bufnr)
+            --         custom_attach(client, bufnr)
+            --     end,
+            -- })
         end,
     },
     {
@@ -237,7 +229,7 @@ return {
                     "lua_ls",
                     "volar",
                     "ts_ls",
-                    "eslint",
+                    -- "eslint",
                 },
             })
         end,

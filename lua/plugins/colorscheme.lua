@@ -1,9 +1,14 @@
 return {
-    "folke/tokyonight.nvim",
-    name = "tokyonight",
+    "ramojus/mellifluous.nvim",
+    name = "mellifluous",
     priority = 1000,
     lazy = false,
     config = function()
-        vim.cmd.colorscheme("tokyonight-night")
+        require("mellifluous").setup({
+            mellifluous = {
+                neutral = true,
+            },
+        })
+        vim.cmd.colorscheme("mellifluous")
     end,
 }
