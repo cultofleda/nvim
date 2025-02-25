@@ -137,9 +137,6 @@ return {
                         register_format_on_save(bufnr, format_opts.allowed_clients or { client.name })
                     end
                 end
-                if client.server_capabilities["documentSymbolProvider"] and client.name ~= "volar" then
-                    require("nvim-navic").attach(client, bufnr)
-                end
             end
 
             local capabilities = require("blink.cmp").get_lsp_capabilities()
