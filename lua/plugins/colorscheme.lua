@@ -1,14 +1,10 @@
 return {
-    "ramojus/mellifluous.nvim",
-    name = "mellifluous",
+    "nyoom-engineering/oxocarbon.nvim",
+    name = "oxocarbon",
     priority = 1000,
     lazy = false,
     config = function()
-        require("mellifluous").setup({
-            mellifluous = {
-                neutral = true,
-            },
-        })
-        vim.cmd.colorscheme("mellifluous")
+        vim.opt.background = "dark"
+        vim.cmd.colorscheme("oxocarbon")
     end,
 }
