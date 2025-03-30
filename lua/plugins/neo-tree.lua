@@ -15,7 +15,7 @@ return {
                 },
             },
             window = {
-                position = "right",
+                position = "left",
             },
         })
         vim.keymap.set("n", "<leader>e", "<CMD>Neotree toggle<CR>", { desc = "Toggle N[e]otree" })

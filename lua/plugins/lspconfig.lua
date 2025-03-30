@@ -197,12 +197,18 @@ return {
                     "vue",
                 },
             })
-            -- lspconfig.eslint.setup({
-            --     capabilities = capabilities,
-            --     on_attach = function(client, bufnr)
-            --         custom_attach(client, bufnr)
-            --     end,
-            -- })
+            lspconfig.eslint.setup({
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    custom_attach(client, bufnr)
+                end,
+            })
+            lspconfig.pyright.setup({
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    custom_attach(client, bufnr)
+                end,
+            })
         end,
     },
     {
@@ -223,10 +229,12 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "emmet_language_server",
+                    "eslint",
                     "lua_ls",
-                    "volar",
+                    "pyright",
                     "ts_ls",
-                    -- "eslint",
+                    "volar",
+                    "ruff",
                 },
             })
         end,
