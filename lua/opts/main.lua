@@ -20,6 +20,12 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 
+-- Add word wrap
+vim.opt.linebreak = true
+vim.opt.textwidth = 80
+vim.opt.wrap = true
+vim.opt.wrapmargin = 2
+
 -- Configure how splits should be opened (to the right and to the bottom)
 vim.opt.splitright = true
 vim.opt.splitbelow = true
