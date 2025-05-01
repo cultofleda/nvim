@@ -167,12 +167,17 @@ return {
                     custom_attach(client, bufnr)
                 end,
                 --     NOTE: Let's just keep these here in case we need it later or something
-                --     settings = {},
-                --     on_new_config = function(new_config, new_root_dir)
-                --         local tsserver_path = get_typescript_server_path(new_root_dir)
-                --         new_config.init_options.typescript.tsdk = tsserver_path
-                --     end,
+                settings = {},
+                on_new_config = function(new_config, new_root_dir)
+                    local tsserver_path = get_typescript_server_path(new_root_dir)
+                    new_config.init_options.typescript.tsdk = tsserver_path
+                end,
             })
+
+            local mason_registry = require("mason-registry")
+            local volar_path = mason_registry.get_package("vue-language-server"):get_install_path()
+                .. "/node_modules/@vue/language-server"
+
             lspconfig.ts_ls.setup({
                 capabilities = capabilities,
                 on_attach = function(client, bufnr)
@@ -182,10 +187,8 @@ return {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = vim.fn.expand(
-                                "$FNM_DIR/aliases/default/lib/node_modules/@vue/typescript-plugin/"
-                            ),
-                            languages = { "vue", "javascript", "typescript" },
+                            location = volar_path,
+                            languages = { "vue" },
                             configNamespace = "typescript",
                             enableForWorkspaceTypeScriptVersions = true,
                         },
@@ -193,7 +196,9 @@ return {
                 },
                 filetypes = {
                     "javascript",
+                    "javascriptreact",
                     "typescript",
+                    "typescriptreact",
                     "vue",
                 },
             })
@@ -232,9 +237,9 @@ return {
                     "eslint",
                     "lua_ls",
                     "pyright",
+                    "ruff",
                     "ts_ls",
                     "volar",
-                    "ruff",
                 },
             })
         end,
