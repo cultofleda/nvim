@@ -90,7 +90,12 @@ return {
                     return vim.tbl_extend("force", opts, { desc = desc })
                 end
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, with_desc(keymap_opts, "Hover"))
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, with_desc(keymap_opts, "[G]o to [d]efinition"))
+                vim.keymap.set(
+                    "n",
+                    "gd",
+                    "<cmd>Telescope lsp_definitions<CR>",
+                    with_desc(keymap_opts, "[G]o to [d]efinition")
+                )
                 vim.keymap.set(
                     "n",
                     "<leader>gr",
