@@ -22,10 +22,10 @@ vim.opt.sidescrolloff = 8
 vim.opt.clipboard = "unnamedplus"
 
 -- Add word wrap
-vim.opt.linebreak = true
-vim.opt.textwidth = 80
-vim.opt.wrap = true
-vim.opt.wrapmargin = 2
+-- vim.opt.linebreak = true
+-- vim.opt.textwidth = 80
+-- vim.opt.wrap = true
+-- vim.opt.wrapmargin = 2
 
 -- Configure how splits should be opened (to the right and to the bottom)
 vim.opt.splitright = true
@@ -43,28 +43,25 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.cmd("set nohidden")
 vim.cmd("set signcolumn=yes:1")
 
--- Enable cross-copy-paste between WSL and nvim
-if vim.fn.has("wsl") == 1 then
-    if vim.fn.executable("wl-copy") == 0 then
-        print("wl-clipboard not found, clipboard integration won't work")
-    else
-        vim.g.clipboard = {
-            name = "wl-clipboard (wsl)",
-            copy = {
-                ["+"] = "wl-copy --foreground --type text/plain",
-                ["*"] = "wl-copy --foreground --primary --type text/plain",
-            },
-            paste = {
-                ["+"] = function()
-                    return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { "" }, 1) -- '1' keeps empty lines
-                end,
-                ["*"] = function()
-                    return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { "" }, 1)
-                end,
-            },
-            cache_enabled = true,
-        }
-    end
+if vim.fn.executable("wl-copy") == 0 then
+    print("wl-clipboard not found, clipboard integration won't work")
+else
+    vim.g.clipboard = {
+        name = "wl-clipboard (wsl)",
+        copy = {
+            ["+"] = "wl-copy --foreground --type text/plain",
+            ["*"] = "wl-copy --foreground --primary --type text/plain",
+        },
+        paste = {
+            ["+"] = function()
+                return vim.fn.systemlist('wl-paste --no-newline|sed -e "s/\r$//"', { "" }, 1) -- '1' keeps empty lines
+            end,
+            ["*"] = function()
+                return vim.fn.systemlist('wl-paste --primary --no-newline|sed -e "s/\r$//"', { "" }, 1)
+            end,
+        },
+        cache_enabled = true,
+    }
 end
 
 -- highlight yanked text for 200ms using the "Visual" highlight group

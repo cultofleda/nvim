@@ -1,6 +1,9 @@
 return {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        "moyiz/blink-emoji.nvim",
+    },
     version = "*",
     opts = {
         keymap = {
@@ -25,10 +28,18 @@ return {
                         end,
                     },
                 },
+                emoji = {
+                    module = "blink-emoji",
+                    name = "Emoji",
+                    score_offset = 15,
+                    opts = { insert = true },
+                    should_show_items = function()
+                        return vim.tbl_contains({ "gitcommit", "markdown" }, vim.o.filetype)
+                    end,
+                },
             },
-            default = { "lsp", "path", "snippets", "buffer" },
+            default = { "lsp", "path", "snippets", "buffer", "emoji" },
             min_keyword_length = function(ctx)
-                -- only applies when typing a command, doesn't apply to arguments
                 if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
                     return 4
                 end
@@ -45,7 +56,6 @@ return {
                                 local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
                                 return kind_icon
                             end,
-                            -- Optionally, you may also use the highlights from mini.icons
                             highlight = function(ctx)
                                 local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
                                 return hl
