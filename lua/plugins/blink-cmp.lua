@@ -16,11 +16,13 @@ return {
         },
         sources = {
             providers = {
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    score_offset = 100,
+                },
                 buffer = {
                     opts = {
-                        -- get all buffers, even ones like neo-tree
-                        get_bufnrs = vim.api.nvim_list_bufs,
-                        -- or (recommended) filter to only "normal" buffers
                         get_bufnrs = function()
                             return vim.tbl_filter(function(bufnr)
                                 return vim.bo[bufnr].buftype == ""
@@ -38,7 +40,7 @@ return {
                     end,
                 },
             },
-            default = { "lsp", "path", "snippets", "buffer", "emoji" },
+            default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
             min_keyword_length = function(ctx)
                 if ctx.mode == "cmdline" and string.find(ctx.line, " ") == nil then
                     return 4

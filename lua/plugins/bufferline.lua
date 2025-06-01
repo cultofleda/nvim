@@ -9,7 +9,5 @@ return {
         { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
         { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
     },
-    config = function(_, opts)
-        require("bufferline").setup(opts)
-    end,
+    opts = {}
 }
