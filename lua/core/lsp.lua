@@ -1,6 +1,7 @@
 vim.lsp.enable({
     "lua_ls",
     "volar",
+    "tailwindcss-language-server",
 })
 
 vim.diagnostic.config({
