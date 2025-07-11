@@ -1,5 +1,3 @@
---- This isn't working on my machine because, for whatever reason
---- `lua-language-server` is not executable, even though it's installed
 return {
     cmd = {
         "lua-language-server",

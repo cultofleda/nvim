@@ -1,10 +1,6 @@
-local tsdk_path = vim.fn.expand("$HOME/.local/npmbin/node_modules/typescript/lib")
-
+---@diagnostic disable: undefined-global
 return {
-    cmd = {
-        "vue-language-server",
-        "--stdio",
-    },
+    cmd = { "vue-language-server", "--stdio" },
     on_init = function(client)
         client.handlers["tsserver/request"] = function(_, result, context)
             local clients = vim.lsp.get_clients({ bufnr = context.bufnr, name = "vtsls" })
@@ -16,7 +12,6 @@ return {
                 return
             end
             local ts_client = clients[1]
-
             local param = unpack(result)
             local id, command, payload = unpack(param)
             ts_client:exec_cmd({
@@ -33,34 +28,7 @@ return {
             end)
         end
     end,
-    -- cmd = {
-    --     "vue-language-server",
-    --     "--stdio",
-    -- },
-    -- filetypes = {
-    --     "typescript",
-    --     "javascript",
-    --     "javascriptreact",
-    --     "typescriptreact",
-    --     "vue",
-    -- },
-    -- init_options = {
-    --     typescript = {
-    --         hostInfo = "neovim",
-    --         tsdk = tsdk_path,
-    --     },
-    --     vue = {
-    --         --- so I guess we just enable this, tell ts_ls to go fuck itself and just use volar for everything?
-    --         hybridMode = false,
-    --     },
-    -- },
-    -- on_new_config = function(new_config, new_root_dir)
-    --     local lib_path = vim.fs.find("node_modules/typescript/lib", {
-    --         path = new_root_dir,
-    --         upwards = true,
-    --     })[1]
-    --     if lib_path then
-    --         new_config.init_options.typescript.tsdk = lib_path
-    --     end
-    -- end,
+    filetypes = {
+        "vue",
+    },
 }

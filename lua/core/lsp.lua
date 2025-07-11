@@ -1,9 +1,12 @@
-vim.lsp.enable({
+local lsps = {
+    "lua-language-server",
+    -- perhaps it's important to configure vtsls before vue_ls, who knows
     "vtsls",
-    "lua_ls",
+    "vue-language-server",
     "tailwindcss-language-server",
-    "volar",
-})
+}
+
+vim.lsp.enable(lsps)
 
 vim.diagnostic.config({
     float = {
@@ -23,8 +26,8 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.WARN] = "WarningMsg",
         },
     },
-    underline = true,
-    update_in_insert = false,
+    underline = false,
+    update_in_insert = true,
     virtual_lines = false,
     virtual_text = true,
 })

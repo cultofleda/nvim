@@ -4,9 +4,16 @@ return {
         "--stdio",
     },
     filetypes = {
+        "css",
+        "scss",
+        "sass",
         "html",
-        "typescriptreact",
+        "heex",
+        "elixir",
+        "javascript",
         "javascriptreact",
-        "vue",
+        "typescript",
+        "typescriptreact",
+        "svelte",
     },
 }
