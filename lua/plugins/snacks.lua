@@ -9,7 +9,18 @@ return {
         -- refer to the configuration section below
         explorer = { enabled = true },
         input = { enabled = true },
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+            sources = {
+                explorer = {
+                    layout = {
+                        layout = {
+                            position = "right",
+                        },
+                    },
+                },
+            },
+        },
         scope = { enabled = true },
         statuscolumn = { enabled = true },
         words = { enabled = true },
