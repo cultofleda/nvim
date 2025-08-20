@@ -18,4 +18,16 @@ return {
             -- vim.cmd("colorscheme poimandres")
         end,
     },
+    {
+        "marko-cerovac/material.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("material").setup({})
+        end,
+        init = function()
+            -- vim.g.material_style = "deep ocean"
+            -- vim.cmd("colorscheme material")
+        end,
+    },
 }
