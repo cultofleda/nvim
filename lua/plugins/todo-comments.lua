@@ -7,4 +7,13 @@ return {
         -- your configuration comes here
         -- or leave it empty to use the default settings
     },
+    keys = {
+        {
+            "<leader>st",
+            function()
+                Snacks.picker.todo_comments()
+            end,
+            desc = "[S]earch [T]odos",
+        },
+    },
 }
