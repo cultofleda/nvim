@@ -4,6 +4,7 @@ local lsps = {
     "vtsls",
     "vue-language-server",
     "tailwindcss-language-server",
+    "basedpyright",
 }
 
 vim.lsp.enable(lsps)
