@@ -23,4 +23,4 @@ vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Record macro" })
 vim.keymap.set("n", "<M-q>", "Q", { noremap = true, desc = "Replay last register" })
 
 -- Remove search highlight after grepping through the document with `/`
-vim.keymap.set("n", "<esc><esc>", "<CMD>let @/=''<CR>", { noremap = true, desc = "Reset search highlight" })
+vim.keymap.set("n", "<leader>hc", "<CMD>let @/=''<CR>", { noremap = true, desc = "[H]ighlight [c]lear" })
