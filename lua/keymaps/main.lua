@@ -7,6 +7,10 @@ vim.keymap.set("n", "<C-j>", "<CMD>wincmd j<CR>", { silent = true })
 vim.keymap.set("n", "<C-k>", "<CMD>wincmd k<CR>", { silent = true })
 vim.keymap.set("n", "<C-l>", "<CMD>wincmd l<CR>", { silent = true })
 
+-- Create splits
+vim.keymap.set("n", "<leader><C-v>", "<CMD>vsplit<CR>", { silent = true })
+vim.keymap.set("n", "<leader><C-h>", "<CMD>split<CR>", { silent = true })
+
 -- Resize splits
 vim.keymap.set("n", "<C-A-h>", "<CMD>vertical resize +5<CR>", { silent = true })
 vim.keymap.set("n", "<C-A-j>", "<CMD>horizontal resize -5<CR>", { silent = true })
