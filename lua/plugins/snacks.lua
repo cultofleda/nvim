@@ -13,6 +13,7 @@ return {
             enabled = true,
             sources = {
                 explorer = {
+                    hidden = true,
                     layout = {
                         layout = {
                             position = "right",
