@@ -2,7 +2,6 @@ local lsps = {
     "lua-language-server",
     -- perhaps it's important to configure vtsls before vue_ls, who knows
     "vtsls",
-    "vue-language-server",
     "basedpyright",
 }
 
