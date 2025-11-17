@@ -1,8 +1,7 @@
 local lsps = {
     "lua-language-server",
-    -- perhaps it's important to configure vtsls before vue_ls, who knows
-    "vtsls",
     "basedpyright",
+    "ts_ls",
 }
 
 vim.lsp.enable(lsps)
