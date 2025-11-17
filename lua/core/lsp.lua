@@ -1,6 +1,6 @@
 local lsps = {
-    "lua-language-server",
     "basedpyright",
+    "lua-language-server",
     "ts_ls",
 }
 
