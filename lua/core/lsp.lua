@@ -3,7 +3,6 @@ local lsps = {
     -- perhaps it's important to configure vtsls before vue_ls, who knows
     "vtsls",
     "vue-language-server",
-    "tailwindcss-language-server",
     "basedpyright",
 }
 
