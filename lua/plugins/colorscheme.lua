@@ -1,10 +1,12 @@
 return {
-    {
-        "olimorris/onedarkpro.nvim",
-        priority = 1000, -- Ensure it loads first
-        config = function()
-            require("onedarkpro").setup({})
-            vim.cmd.colorscheme("onedark")
-        end,
-    },
+    "ydkulks/cursor-dark.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+        require("cursor-dark").setup({
+            style = "dark",
+            transparent = true,
+        })
+        vim.cmd.colorscheme("cursor-dark")
+    end,
 }
