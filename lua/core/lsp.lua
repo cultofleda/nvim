@@ -4,6 +4,7 @@ local lsps = {
     "lua-language-server",
     "some-sass-ls",
     "ts_ls",
+    "tailwindcss-language-server",
 }
 
 vim.lsp.enable(lsps)
