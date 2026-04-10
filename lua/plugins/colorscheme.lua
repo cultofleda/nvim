@@ -1,12 +1,8 @@
 return {
-    "ydkulks/cursor-dark.nvim",
+    "smit4k/shale.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-        require("cursor-dark").setup({
-            style = "dark",
-            transparent = true,
-        })
-        vim.cmd.colorscheme("cursor-dark")
+        vim.cmd.colorscheme("shale")
     end,
 }
