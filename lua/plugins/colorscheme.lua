@@ -1,8 +1,8 @@
 return {
-    "smit4k/shale.nvim",
-    lazy = false,
+    "everviolet/nvim",
+    name = "evergarden",
     priority = 1000,
     config = function()
-        vim.cmd.colorscheme("shale")
+        vim.cmd.colorscheme("evergarden")
     end,
 }
