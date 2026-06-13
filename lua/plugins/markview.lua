@@ -1,10 +1,8 @@
 return {
-    {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        dependencies = {
-            "saghen/blink.cmp",
-            "nvim-mini/mini.icons",
-        },
+    "OXY2DEV/markview.nvim",
+    ft = "markdown",
+    dependencies = {
+        "saghen/blink.cmp",
+        "echasnovski/mini.icons",
     },
 }

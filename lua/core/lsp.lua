@@ -28,7 +28,7 @@ vim.diagnostic.config({
         },
     },
     underline = false,
-    update_in_insert = true,
+    update_in_insert = false,
     virtual_lines = false,
     virtual_text = true,
 })

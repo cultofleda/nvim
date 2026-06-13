@@ -1,11 +1,3 @@
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-    end,
-    desc = "Autoformat document on save through conform",
-    pattern = "*",
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local map = function(keys, func, desc)
@@ -23,8 +15,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("K", vim.lsp.buf.hover, "[K]hover")
 
         map("<leader>dk", vim.diagnostic.open_float, "[D]iagnostics [k]current")
-        map("<leader>dn", vim.diagnostic.goto_next, "[D]iagnostics [n]ext")
-        map("<leader>dp", vim.diagnostic.goto_prev, "[D]iagnostics [p]rev")
+        map("<leader>dn", function()
+            vim.diagnostic.jump({ count = 1 })
+        end, "[D]iagnostics [n]ext")
+        map("<leader>dp", function()
+            vim.diagnostic.jump({ count = -1 })
+        end, "[D]iagnostics [p]rev")
 
         local function client_supports_method(client, method, bufnr)
             if vim.fn.has("nvim-0.11") == 1 then

@@ -1,6 +1,7 @@
 return {
     "yorickpeterse/nvim-pqf",
-    setup = function()
+    ft = "qf",
+    config = function()
         require("pqf").setup({
             signs = {
                 error = { text = "E", hl = "DiagnosticSignError" },

@@ -40,5 +40,4 @@ vim.opt.inccommand = "split"
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
-vim.cmd("set hidden")
-vim.cmd("set signcolumn=yes:1")
+vim.opt.signcolumn = "yes:1"

@@ -1,16 +1,10 @@
 return {
     cmd = {
-        "some-sass-language-server",
+        "vscode-css-language-server",
         "--stdio",
     },
-    filetypes = { "css", "vue" },
+    filetypes = { "css" },
     single_file_support = true,
-    root_markers = {
-        { ".git", "package.json" },
-    },
-    settings = {
-        somesass = {
-            suggestAllFromOpenDocument = true,
-        },
-    },
+    init_options = { provideFormatter = false },
+    root_markers = { "package.json", ".git" },
 }

@@ -1,5 +1,7 @@
 return {
     "zk-org/zk-nvim",
+    ft = "markdown",
+    cmd = { "ZkNotes", "ZkNew", "ZkTags", "ZkMatch" },
     config = function()
         require("zk").setup({
             picker = "snacks_picker",

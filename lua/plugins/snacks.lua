@@ -32,21 +32,21 @@ return {
             function()
                 Snacks.picker.files()
             end,
-            "Find files",
+            desc = "Find files",
         },
         {
             "<leader>fb",
             function()
                 Snacks.picker.buffers()
             end,
-            "[F]ind [b]uffers",
+            desc = "[F]ind [b]uffers",
         },
         {
             "<leader>e",
             function()
                 Snacks.explorer()
             end,
-            "File [e]xplorer",
+            desc = "File [e]xplorer",
         },
         {
             "<leader>gw",

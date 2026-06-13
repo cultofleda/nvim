@@ -1,11 +1,8 @@
 -- Lazy
 vim.keymap.set("n", "<leader>l", "<CMD>Lazy<CR>", { silent = true, desc = "Lazy" })
 
--- Navigation
-vim.keymap.set("n", "<C-h>", "<CMD>wincmd h<CR>", { silent = true })
-vim.keymap.set("n", "<C-j>", "<CMD>wincmd j<CR>", { silent = true })
-vim.keymap.set("n", "<C-k>", "<CMD>wincmd k<CR>", { silent = true })
-vim.keymap.set("n", "<C-l>", "<CMD>wincmd l<CR>", { silent = true })
+-- Window navigation (<C-hjkl>) is handled by nvim-tmux-navigation
+-- (see lua/plugins/tmux-navigation.lua) for seamless nvim <-> tmux movement.
 
 -- Create splits
 vim.keymap.set("n", "<leader><C-v>", "<CMD>vsplit<CR>", { silent = true })

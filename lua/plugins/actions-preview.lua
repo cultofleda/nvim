@@ -1,9 +1,8 @@
 return {
     "aznhe21/actions-preview.nvim",
-    opts = {},
-    setup = function()
+    config = function()
         require("actions-preview").setup({
-            backend = { "telescope" },
+            backend = { "snacks" },
         })
     end,
 }
