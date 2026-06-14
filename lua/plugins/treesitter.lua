@@ -9,7 +9,6 @@ return {
                 "css",
                 "html",
                 "javascript",
-                "lua",
                 "python",
                 "rust",
                 "scss",
